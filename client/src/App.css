@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+    
+}
+
+.scrollbox {
+    background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 24%, rgba(0,212,255,1) 100%);
+}
+
+body{
+    margin: 0px;
+}
+
+ul{
+    list-style-type: none;
+    text-decoration: none;
+    color: white;
+}
+
+.show { opacity: 1; }
+
+.navbar{
+    /* background-color: blueviolet; */
+    color: inherit;
+    color: white;
+    width: 100%;
+    font-family: 'Hubballi', cursive;
+    font-size: 35px;
+    display: flex;
+    flex-direction: row;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.intro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Hubballi', cursive;
+}
+
+.userPost{
+    display: flex;
+    padding: 10px;
+    margin: 5px 5px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 330px;
+}
+
+.footer{
+    background-color: black;
+    font-family: 'Hubballi', cursive;
+    width: 100%;
+    color: white;
+}
+
+@media screen and (max-width:480px) {
+    
+    nav{
+        display: none
+    }
+
+    hamNav{
+        display: block;
+    }
+
+}
