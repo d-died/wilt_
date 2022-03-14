@@ -10,12 +10,13 @@ const Modals = ( update, setUpdate ) => {
     const toggle = () => {
         setModal(!modal)
         console.log(modal)
+        setFormState({ title: '', description: ''})
     }
     const [ form, setForm ] = useState(false)
     const formToggle = () => {
         setModal(!modal)
         setForm(!form)
-        setUpdate(!update)
+        setFormState({ title: '', description: ''})
         console.log(form, modal)
     }
 
@@ -44,6 +45,7 @@ const Modals = ( update, setUpdate ) => {
             .post('http://localhost:8000/posts', formState)
             .catch(err => console.error(err))
 
+        setFormState({ title: '', description: ''})
         
     }
 

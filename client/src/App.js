@@ -5,7 +5,7 @@ import Modals from './components/Modals'
 import { PostProvider } from './PostContext'
 import About from './components/About'
 import Intro from './components/Intro'
-import axios, { Axios } from 'axios'
+import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { 
   Modal,
@@ -19,20 +19,30 @@ import {
 function App() {
 
   const [ username, setUsername ] = useState('')
-  const [ password, setPassword ] = useState('')
-  const [ posts, setPosts ] = useState(null)
+  const [ password, setPassword ] = useState('password')
+  const [ posts, setPosts ] = useState([])
 
 
-  const [ update, setUpdate ] = useState(false)
-  useEffect(() => {}, [update])
+  // const [ update, setUpdate ] = useState(false)
+  // useEffect(() => {}, [update])
 
   useEffect(() => {
-    const getPosts = async () => {
-      const res = await axios.get('http://localhost:8000/posts')
-      setPosts(res.data)
-    }
+
     getPosts()
-  }, [])
+
+  }, []);
+
+
+  const getPosts = async () => {
+    const res = await axios.get('http://localhost:8000/posts')
+    const data = await res.data
+    setPosts(data)
+    
+    console.log(data)
+    console.log(posts)
+  }
+    
+    
   // const getPosts = () => {
   //     axios.get('http://localhost:8000/posts')
   //       // .then((res) => res.json())
@@ -43,11 +53,27 @@ function App() {
   // getPosts()
 
   console.log(posts)
+  // console.log()
 
  
+  const deletePost = (id) => {
+    // console.log(id)
+    // console.log(postData.id)
+    // if (id === )
+    axios
+        .delete(`http://localhost:8000/posts/${ id }`)
+        .catch(err => console.error(err))
+
+    // setUpdate(!update)
+    
+  }
+
+  //const postData = posts.posts
+  //console.log(postData)
+
 
   return (
-    <PostProvider>
+    // <PostProvider>
        <div className="App">
         <div className="scollbox">
         <section id='home'>
@@ -62,13 +88,16 @@ function App() {
         </section>
         <section id='posts'>
           <MyPosts
-            posts={ posts }  
+            posts={ posts }
+            password={ password }
+            // update={ update }
+            // setUpdate={ setUpdate }  
           />
         </section>
         <section>
           <Modals 
-            update={ update }
-            setUpdate={ setUpdate }
+            // update={ update }
+            // setUpdate={ setUpdate }
             // formState={ formState }
             // setFormState={ setFormState }
             // handleChange={ handleChange }
@@ -81,7 +110,7 @@ function App() {
       </div>
       </div>
 
-    </PostProvider>
+    // </PostProvider>
    
   );
 }

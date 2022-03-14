@@ -24,8 +24,8 @@ const db = require('./db/connection')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-const requestLogger = require('./middleware/request_logger');
-app.use(requestLogger);
+// const requestLogger = require('./middleware/request_logger');
+// app.use(requestLogger);
 
 //==================================
 //ROUTES
@@ -35,6 +35,7 @@ app.get('/', (req, res) => {res.redirect('/posts')})
 // app.get('/posts', )
 
 app.use('/posts', require('./controllers/PostController'))
+app.use('/users', require('./controllers/UserController'))
 
 // const postController = require('./controllers/PostController')
 // app.use('/posts', postController)
@@ -52,6 +53,20 @@ app.use('/posts', require('./controllers/PostController'))
 //         if (err) return res.status(500).send('table creation failed')
 
 //         return res.send(`Successfully created table - ${posts}`)
+//     })
+// })
+
+// app.get('/users', (req, res) => {
+//     let user = 'user'
+//     let query = `CREATE TABLE ${ user } 
+//     (id INT AUTO_INCREMENT PRIMARY KEY, 
+//     email VARCHAR(150)
+//     password VARCHAR(100))`
+
+//     db.query(query, (err, rows) => {
+//         if(err) return res.status(500).send('table creation failed')
+
+//         return res.send(`Successfully created table - ${ users }`)
 //     })
 // })
 
