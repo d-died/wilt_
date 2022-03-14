@@ -2,8 +2,8 @@ const mysql = require('mysql')
 require('dotenv').config()
 
 const { Sequelize } = require('@sequelize/core')
-const sequelize = new Sequelize('wilt', 'root', process.env.DB_ACCESS_KEY, { 
-    host: 'localhost',
+const sequelize = new Sequelize('wilt', process.env.DB_USERNAME, process.env.DB_ACCESS_KEY, { 
+    host: process.env.DB_HOST,
     dialect: 'mysql',
     operatorsAliases: 0,
 
@@ -14,6 +14,13 @@ const sequelize = new Sequelize('wilt', 'root', process.env.DB_ACCESS_KEY, {
         idle: 10000
     },
 })
+
+// const db = mysql.createConnection({
+//     host: 'process.env.DB_HOST',
+//     user: 'process.env.DB_USERNAME',
+//     password: 'process.env.DB_PASSWORD',
+//     database: 'wilt'
+// })
 
 // const db = {}
 // db.Sequelize = Sequelize

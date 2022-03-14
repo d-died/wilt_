@@ -2,18 +2,14 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 app.use(cors())
+require('dotenv').config()
 app.set('port', process.env.PORT || 8000 )
 
 
 const db = require('./db/connection')
 // db.sequelize.sync()
 
-// const db = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'password',
-//     database: 'WILT'
-// })
+
 
 
 //==================================
